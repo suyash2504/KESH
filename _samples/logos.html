@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KESH · Logo samples</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Cormorant+Garamond:wght@400;500&family=Italiana&family=DM+Sans:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
+<style>
+  :root { --sand:#e8d2bd; --cream:#f3e6d8; --ink:#1c1714; --mute:#5e5047; --clay:#c9a487; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:#d9c2ad; font-family:'DM Sans', sans-serif; color:var(--ink); padding:32px clamp(16px,3vw,40px) 80px; }
+  header { max-width:1320px; margin:0 auto 28px; display:flex; justify-content:space-between; align-items:end; gap:16px; flex-wrap:wrap; }
+  header h1 { font-family:'Playfair Display', serif; font-weight:400; font-size:clamp(30px,4vw,46px); }
+  header p { color:var(--mute); font-size:14px; max-width:520px; }
+  .grid { max-width:1320px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill, minmax(380px, 1fr)); gap:16px; }
+  .card { background:var(--cream); border-radius:10px; overflow:hidden; display:flex; flex-direction:column; }
+  .hero { background:var(--sand); height:210px; display:grid; place-items:center; font-size:58px; position:relative; }
+  .num { position:absolute; left:14px; top:12px; font:600 12px 'DM Sans'; color:var(--mute); }
+  .row { display:grid; grid-template-columns:1fr 92px; border-top:1px solid #1c171420; }
+  .dark { --pivot:var(--ink); background:var(--ink); color:var(--sand); height:96px; display:grid; place-items:center; font-size:30px; }
+  .fav { background:var(--cream); display:grid; place-items:center; gap:6px; grid-auto-flow:column; padding:0 8px; }
+  .fav span { --pivot:var(--ink); display:grid; place-items:center; border-radius:8px; background:var(--ink); color:var(--sand); overflow:hidden; }
+  .nav { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; background:var(--sand); border-top:1px solid #1c171420; font-size:11px; color:var(--mute); }
+  .nav .l { font-size:17px; color:var(--ink); }
+  .nav i { font-style:normal; background:var(--ink); color:#fff; padding:6px 10px; border-radius:3px; font-weight:600; }
+  .meta { padding:14px 16px 16px; }
+  .meta b { font-family:'Playfair Display', serif; font-weight:500; font-size:19px; }
+  .meta p { color:var(--mute); font-size:13px; line-height:1.5; margin-top:4px; }
+  .rec { display:inline-block; margin-left:8px; background:var(--ink); color:var(--sand); font:600 10px 'DM Sans'; letter-spacing:.12em; padding:3px 7px; border-radius:99px; vertical-align:middle; }
+  .lg { display:inline-flex; align-items:center; line-height:1; white-space:nowrap; }
+  .lg.base { align-items:baseline; }
+  svg { overflow:visible; }
+  .tail path { vector-effect:non-scaling-stroke; }
+</style>
+</head>
+<body>
+<header>
+  <h1>KESH · logo samples</h1>
+  <p>Har card: upar bada logo (light), neeche dark background + favicon (32px &amp; 16px), aur website nav mein kaisa dikhega.</p>
+</header>
+<div class="grid" id="grid"></div>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="smear" x="-10%" y="-40%" width="120%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency=".02 .12" numOctaves="4" seed="3" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="18" />
+    </filter>
+  </defs>
+</svg>
+
+<script>
+// Custom glyphs on a 100-unit cap height (Playfair caps are ~0.71em), with
+// Playfair-like weights: 17-unit stems, 5-unit hairlines. They sit on the baseline.
+const CAP = '0.71em'
+const scissorK = (h = CAP) => `<svg viewBox="-26 0 108 100" style="height:${h};margin-left:-.04em;margin-right:.1em" fill="currentColor">
+  <rect x="0" y="0" width="17" height="100"/>
+  <path d="M17 51 L66 0 L76 0 L17 61 Z"/>
+  <path d="M23 44 L82 100 L62 100 L13 55 Z"/>
+  <path d="M8 50 L-6 39 M8 58 L-6 69" stroke="currentColor" stroke-width="4"/>
+  <circle cx="-13" cy="32" r="9" fill="none" stroke="currentColor" stroke-width="4.5"/>
+  <circle cx="-13" cy="76" r="9" fill="none" stroke="currentColor" stroke-width="4.5"/>
+  <circle cx="18" cy="54" r="4.5" fill="var(--pivot, #e8d2bd)" stroke="currentColor" stroke-width="3"/>
+</svg>`
+
+// The real Playfair S, with two hair-fine strands curling off its terminals.
+const strandS = () => `<span style="position:relative;display:inline-block">S<svg class="tail" viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;left:-.1em;top:0;width:calc(100% + .2em);height:1em" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" vector-effect="non-scaling-stroke">
+  <path d="M84 28 C 96 16, 104 4, 92 -6 C 86 -10, 82 -4, 86 0"/>
+  <path d="M20 88 C 6 100, -4 108, 6 116 C 12 120, 16 114, 12 110"/>
+</svg></span>`
+
+const combH = (h = CAP) => `<svg viewBox="0 0 90 100" style="height:${h};margin-left:.04em" fill="currentColor">
+  <rect x="0" y="0" width="17" height="100"/><rect x="73" y="0" width="17" height="100"/>
+  <rect x="17" y="40" width="56" height="8"/>
+  ${Array.from({ length: 9 }, (_, i) => `<rect x="${20.5 + i * 5.7}" y="48" width="3" height="${i % 2 ? 11 : 16}"/>`).join('')}
+</svg>`
+
+const smear = (fill) => `<svg viewBox="0 0 400 80" preserveAspectRatio="none" style="position:absolute;inset:-.18em -.35em;width:calc(100% + .7em);height:calc(100% + .36em);z-index:0">
+  <path filter="url(#smear)" fill="${fill}" d="M10 22 C 80 8, 300 10, 392 18 L 388 62 C 290 74, 90 70, 6 58 Z"/></svg>`
+
+const L = [
+  {
+    name: 'Classic spaced',
+    note: 'Site ka Playfair Display, wide letter-spacing. Seedha, premium, kabhi purana nahi lagega.',
+    logo: () => `<span class="lg" style="font-family:'Playfair Display';font-weight:500;letter-spacing:.3em;margin-right:-.3em">KESH</span>`,
+    fav: s => `<span style="font-family:'Playfair Display';font-size:${s * .62}px">K</span>`,
+  },
+  {
+    name: 'Didone fashion',
+    note: 'Bodoni, high-contrast. Vogue / Harper\'s Bazaar wala editorial feel. Women-leaning lagta hai.',
+    logo: () => `<span class="lg" style="font-family:'Bodoni Moda';font-weight:400;letter-spacing:.06em;font-size:1.12em">KESH</span>`,
+    fav: s => `<span style="font-family:'Bodoni Moda';font-size:${s * .66}px">K</span>`,
+  },
+  {
+    name: 'Scissor K',
+    rec: true,
+    note: 'K ke dono arms khuli kainchi ke blades hain, pivot aur finger-rings ke saath. Salon turant samajh aata hai, men aur women dono ke liye neutral.',
+    logo: () => `<span class="lg base" style="font-family:'Playfair Display';font-weight:500;letter-spacing:.14em">${scissorK()}ESH</span>`,
+    fav: s => `<span style="width:${s}px;height:${s}px">${scissorK(s * .62 + 'px')}</span>`,
+  },
+  {
+    name: 'Strand S',
+    note: 'S ek behti hui baal ki lat hai, patle tails ke saath. Kesh = baal, toh naam aur mark ek hi baat kehte hain.',
+    logo: () => `<span class="lg base" style="font-family:'Playfair Display';font-weight:500;letter-spacing:.12em">KE${strandS()}H</span>`,
+    fav: s => `<span style="font-family:'Playfair Display';font-size:${s * .62}px">${strandS()}</span>`,
+  },
+  {
+    name: 'Comb H',
+    note: 'H ka crossbar kanghi hai. Subtle hai, pehli nazar mein normal H, dhyaan se dekho toh comb.',
+    logo: () => `<span class="lg base" style="font-family:'Playfair Display';font-weight:500;letter-spacing:.14em">KES${combH()}</span>`,
+    fav: s => `<span style="width:${s}px;height:${s}px">${combH(s * .58 + 'px')}</span>`,
+  },
+  {
+    name: 'केश + KESH',
+    note: 'Upar chhota Devanagari "केश", neeche Cormorant mein KESH. Indian roots dikhte hain, aur naam ka matlab bhi samjha deta hai.',
+    logo: () => `<span class="lg" style="flex-direction:column;gap:.12em"><span style="font-family:'Tiro Devanagari Hindi';font-size:.36em;opacity:.7">केश</span><span style="font-family:'Cormorant Garamond';font-weight:500;letter-spacing:.34em;margin-right:-.34em">KESH</span></span>`,
+    fav: s => `<span style="font-family:'Tiro Devanagari Hindi';font-size:${s * .56}px;padding-top:${s * .12}px">के</span>`,
+  },
+  {
+    name: 'Smear stroke',
+    note: 'KESH ek foundation-smear ke upar, bilkul hero ke torn edge jaisa texture. Site ke saath sabse zyada matching.',
+    logo: dark => `<span class="lg" style="position:relative;font-family:'Playfair Display';font-weight:500;letter-spacing:.2em;padding-left:.2em">${smear(dark ? '#5a4535' : '#f3e6d8')}<span style="position:relative">KESH</span></span>`,
+    fav: s => `<span style="font-family:'Playfair Display';font-size:${s * .62}px;background:linear-gradient(#1c1714,#1c1714);">K</span>`,
+  },
+  {
+    name: 'Stacked badge',
+    note: 'KE / SH do lines mein, ek square badge ke andar. Instagram DP, sign board aur stickers pe sabse strong.',
+    logo: dark => `<span class="lg" style="flex-direction:column;font-family:'Playfair Display';font-weight:500;font-size:.62em;line-height:.92;letter-spacing:.18em;padding:.42em .3em .36em .48em;border:1.5px solid currentColor"><span>KE</span><span>SH</span></span>`,
+    fav: s => `<span style="flex-direction:column;font-family:'Playfair Display';font-size:${s * .32}px;line-height:.9;letter-spacing:.08em;display:flex;align-items:center"><span>KE</span><span>SH</span></span>`,
+  },
+  {
+    name: 'Modern sans',
+    note: 'DM Sans bold, tight. Neeche chhota "UNISEX STUDIO". Clean aur gender-neutral, barbershop crowd ko bhi suit karega.',
+    logo: () => `<span class="lg" style="flex-direction:column;align-items:flex-start;gap:.22em"><span style="font-family:'DM Sans';font-weight:700;letter-spacing:.04em">KESH</span><span style="font-family:'DM Sans';font-weight:500;font-size:.18em;letter-spacing:.42em;opacity:.65">UNISEX STUDIO</span></span>`,
+    fav: s => `<span style="font-family:'DM Sans';font-weight:700;font-size:${s * .6}px">K</span>`,
+  },
+  {
+    name: 'Hairline',
+    note: 'Italiana, bahut patla aur elegant, beech mein ek baal jaisi patli line. Luxury spa feel, lekin chhote size pe halka padta hai.',
+    logo: () => `<span class="lg" style="font-family:Italiana;letter-spacing:.24em;font-size:1.1em;position:relative">KESH<span style="position:absolute;left:0;right:.24em;top:52%;height:1px;background:currentColor;opacity:.5"></span></span>`,
+    fav: s => `<span style="font-family:Italiana;font-size:${s * .7}px">K</span>`,
+  },
+]
+
+document.getElementById('grid').innerHTML = L.map((l, i) => `
+  <article class="card">
+    <div class="hero"><span class="num">${String(i + 1).padStart(2, '0')}</span>${l.logo(false)}</div>
+    <div class="row">
+      <div class="dark">${l.logo(true)}</div>
+      <div class="fav">${l.fav(32).replace('<span ', '<span title="32px" ').replace('style="', 'style="width:32px;height:32px;')}${l.fav(16).replace('style="', 'style="width:16px;height:16px;border-radius:3px;')}</div>
+    </div>
+    <div class="nav"><span class="l">${l.logo(false)}</span><span>Services · Stylists · Gallery</span><i>Book now</i></div>
+    <div class="meta"><b>${l.name}</b>${l.rec ? '<span class="rec">RECOMMENDED</span>' : ''}<p>${l.note}</p></div>
+  </article>`).join('')
+</script>
+</body>
+</html>

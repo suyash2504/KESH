@@ -1,0 +1,44 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-sand: #e8d2bd;
+  --color-cream: #f3e6d8;
+  --color-shell: #f8f0e7;
+  --color-clay: #c9a487;
+  --color-ink: #1c1714;
+  --color-ink-soft: #2d2520;
+  --color-mute: #5e5047;
+  --color-line: rgb(28 23 20 / 0.16);
+
+  --font-serif: 'Playfair Display Variable', Georgia, serif;
+  --font-sans: 'DM Sans Variable', system-ui, sans-serif;
+
+  --animate-marquee: marquee 38s linear infinite;
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body {
+    background: var(--color-sand);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--color-ink); color: var(--color-sand); }
+  :focus-visible { outline: 2px solid var(--color-ink); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+  }
+}
+
+@layer components {
+  .wrap { margin-inline: auto; width: 100%; max-width: 1360px; padding-inline: clamp(16px, 4vw, 56px); }
+  .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-mute); }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}

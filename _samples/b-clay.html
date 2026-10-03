@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KESH · B · Warm Clay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#f4eee5; --card:#fbf8f3; --ink:#2a211b; --mute:#7c6e63; --clay:#b4532a; --sage:#8e9b7e; --sand:#e6d8c5; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:'Inter Tight', sans-serif; overflow-x:hidden; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1280px; margin:0 auto; padding:0 clamp(16px,3vw,32px); }
+  nav { display:flex; align-items:center; justify-content:space-between; padding:20px 0; }
+  .logo { display:flex; align-items:center; gap:10px; font-weight:600; font-size:22px; letter-spacing:.06em; }
+  .logo span { font-family:'Tiro Devanagari Hindi', serif; color:var(--clay); font-size:24px; }
+  .links { display:flex; gap:6px; background:var(--card); padding:6px; border-radius:99px; }
+  .links a { padding:10px 18px; border-radius:99px; font-size:14px; }
+  .links a:first-child { background:var(--ink); color:var(--bg); }
+  .btn { background:var(--clay); color:#fff; padding:14px 24px; border-radius:99px; font-weight:500; font-size:15px; display:inline-flex; align-items:center; gap:10px; transition:.25s; }
+  .btn:hover { transform:translateY(-2px); box-shadow:0 10px 24px -10px var(--clay); }
+  .btn.ghost { background:transparent; color:var(--ink); border:1px solid var(--ink); }
+  .hero { display:grid; grid-template-columns:1.05fr .95fr; gap:16px; margin-top:8px; }
+  .panel { background:var(--card); border-radius:32px; padding:clamp(24px,4vw,56px); position:relative; overflow:hidden; }
+  .pill { display:inline-flex; gap:8px; align-items:center; background:var(--sand); padding:8px 14px; border-radius:99px; font-size:13px; }
+  .pill::before { content:''; width:8px; height:8px; border-radius:50%; background:var(--sage); }
+  h1 { font-family:'Instrument Serif', serif; font-weight:400; font-size:clamp(52px,7.4vw,112px); line-height:.95; margin:28px 0 24px; letter-spacing:-.01em; }
+  h1 em { color:var(--clay); }
+  .sub { color:var(--mute); font-size:17px; line-height:1.6; max-width:440px; margin-bottom:36px; }
+  .cta { display:flex; gap:12px; flex-wrap:wrap; }
+  .visual { background:var(--clay); color:#fff; min-height:560px; display:flex; flex-direction:column; justify-content:space-between; }
+  .visual .big { font-family:'Tiro Devanagari Hindi', serif; font-size:clamp(160px,22vw,320px); line-height:.8; opacity:.18; position:absolute; right:-20px; bottom:-30px; }
+  .blob { position:absolute; width:70%; aspect-ratio:1; border-radius:46% 54% 60% 40% / 50% 40% 60% 50%; background:#c86a40; left:15%; top:12%; animation:morph 9s ease-in-out infinite alternate; }
+  @keyframes morph { to { border-radius:60% 40% 38% 62% / 42% 60% 40% 58%; transform:rotate(12deg) scale(1.04); } }
+  .visual .chip { position:relative; align-self:flex-start; background:#fff3; backdrop-filter:blur(6px); padding:8px 14px; border-radius:99px; font-size:13px; }
+  .review { position:relative; background:var(--card); color:var(--ink); border-radius:22px; padding:18px 20px; max-width:280px; font-size:14px; line-height:1.5; }
+  .review b { display:block; color:var(--clay); margin-bottom:6px; letter-spacing:.1em; }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:16px; }
+  .stat { background:var(--card); border-radius:24px; padding:28px; }
+  .stat b { font-family:'Instrument Serif', serif; font-size:48px; font-weight:400; display:block; }
+  .stat span { color:var(--mute); font-size:14px; }
+  .services { margin:16px 0; }
+  .services-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; gap:16px; flex-wrap:wrap; }
+  h2 { font-family:'Instrument Serif', serif; font-weight:400; font-size:clamp(40px,5vw,64px); line-height:1; }
+  .seg { display:flex; background:var(--sand); border-radius:99px; padding:5px; }
+  .seg button { border:0; background:none; padding:10px 20px; border-radius:99px; font:inherit; font-size:14px; cursor:pointer; color:var(--mute); }
+  .seg button.on { background:var(--ink); color:var(--bg); }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .svc { background:var(--bg); border-radius:22px; padding:24px; display:flex; flex-direction:column; gap:28px; transition:.25s; }
+  .svc:hover { background:var(--sand); }
+  .svc .top { display:flex; justify-content:space-between; color:var(--mute); font-size:13px; }
+  .svc h3 { font-weight:500; font-size:20px; }
+  .svc .price { color:var(--clay); font-weight:600; }
+  @media (max-width:900px) {
+    .links { display:none; }
+    .hero { grid-template-columns:1fr; }
+    .visual { min-height:380px; }
+    .grid { grid-template-columns:1fr 1fr; }
+    .stats { grid-template-columns:1fr; }
+  }
+  @media (max-width:560px) { .grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#"><span>केश</span>KESH</a>
+    <div class="links"><a href="#">Home</a><a href="#">Services</a><a href="#">Stylists</a><a href="#">Gallery</a><a href="#">Offers</a></div>
+    <a class="btn" href="#">Book</a>
+  </nav>
+
+  <header class="hero">
+    <div class="panel">
+      <span class="pill">Open today · 10am – 9pm</span>
+      <h1>Good hair days,<br/><em>for everyone.</em></h1>
+      <p class="sub">A warm, unisex salon for cuts, colour, skin and grooming. Walk in as you are, leave feeling more like you.</p>
+      <div class="cta"><a class="btn" href="#">Book an appointment →</a><a class="btn ghost" href="#">See prices</a></div>
+    </div>
+    <div class="panel visual">
+      <div class="blob"></div>
+      <div class="big">के</div>
+      <span class="chip">Photo slot · stylist at work</span>
+      <div class="review"><b>★★★★★</b>"Best haircut I've had in years, and my wife got her balayage done the same afternoon."<br/><span style="color:var(--mute)">Rohan M.</span></div>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><b>12</b><span>Stylists & groomers</span></div>
+    <div class="stat"><b>4.9★</b><span>From 1,200+ reviews</span></div>
+    <div class="stat"><b>15%</b><span>Off your first visit</span></div>
+  </div>
+
+  <section class="panel services">
+    <div class="services-head">
+      <h2>What we do</h2>
+      <div class="seg" id="tg"><button class="on" data-k="all">All</button><button data-k="hair">Hair</button><button data-k="skin">Skin</button><button data-k="groom">Grooming</button></div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+</div>
+<script>
+  const s = [
+    ['hair','Haircut & style','45 min','from ₹700'],['hair','Global colour','2 hr','from ₹3,800'],['hair','Balayage','3 hr','from ₹6,500'],
+    ['skin','Hydra facial','60 min','₹2,800'],['skin','De-tan cleanup','40 min','₹1,100'],['groom','Beard sculpt','30 min','₹450'],
+    ['groom','Hot towel shave','30 min','₹550'],['hair','Keratin treatment','2.5 hr','from ₹5,500'],['skin','Manicure & pedicure','75 min','₹1,600']
+  ];
+  const grid = document.getElementById('grid');
+  const render = k => grid.innerHTML = s.filter(x => k==='all'||x[0]===k).map(x => `<div class="svc"><div class="top"><span>${x[2]}</span><span>→</span></div><div><h3>${x[1]}</h3><div class="price">${x[3]}</div></div></div>`).join('');
+  render('all');
+  document.getElementById('tg').addEventListener('click', e => {
+    if (!e.target.dataset.k) return;
+    document.querySelectorAll('#tg button').forEach(b => b.classList.toggle('on', b === e.target));
+    render(e.target.dataset.k);
+  });
+</script>
+</body>
+</html>

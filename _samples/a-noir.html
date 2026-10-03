@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KESH · A · Noir & Brass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#0f0e0d; --panel:#181614; --ink:#efe8dc; --mute:#9a9186; --brass:#c9a56a; --line:#2a2622; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:Manrope, sans-serif; overflow-x:hidden; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1280px; margin:0 auto; padding:0 clamp(16px,4vw,48px); }
+  nav { display:flex; align-items:center; justify-content:space-between; padding:28px 0; font-size:13px; letter-spacing:.14em; text-transform:uppercase; }
+  .logo { font-family:'Cormorant Garamond', serif; font-size:28px; letter-spacing:.42em; text-transform:uppercase; }
+  .links { display:flex; gap:36px; color:var(--mute); }
+  .btn { border:1px solid var(--brass); color:var(--brass); padding:13px 22px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; transition:.3s; display:inline-block; }
+  .btn:hover { background:var(--brass); color:var(--bg); }
+  .hero { position:relative; min-height:calc(100vh - 90px); display:grid; grid-template-columns:1.2fr .8fr; align-items:center; gap:48px; padding:40px 0 80px; }
+  .eyebrow { color:var(--brass); font-size:12px; letter-spacing:.3em; text-transform:uppercase; margin-bottom:28px; display:flex; align-items:center; gap:14px; }
+  .eyebrow::before { content:''; width:40px; height:1px; background:var(--brass); }
+  h1 { font-family:'Cormorant Garamond', serif; font-weight:400; font-size:clamp(56px,9vw,148px); line-height:.9; letter-spacing:-.02em; }
+  h1 em { color:var(--brass); }
+  .sub { color:var(--mute); max-width:420px; line-height:1.7; margin:32px 0 40px; font-size:15px; }
+  .portrait { position:relative; aspect-ratio:3/4; background:radial-gradient(120% 80% at 50% 10%, #2b2520 0%, #141210 70%); border:1px solid var(--line); overflow:hidden; }
+  .portrait svg { position:absolute; inset:0; width:100%; height:100%; }
+  .portrait .tag { position:absolute; left:20px; bottom:20px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--mute); }
+  .strand { fill:none; stroke:var(--brass); stroke-width:1; opacity:.55; stroke-dasharray:1400; stroke-dashoffset:1400; animation:draw 4s ease forwards, sway 7s ease-in-out 4s infinite alternate; }
+  @keyframes draw { to { stroke-dashoffset:0; } }
+  @keyframes sway { to { transform:translateX(10px); } }
+  .meta { display:flex; gap:48px; margin-top:12px; color:var(--mute); font-size:12px; letter-spacing:.12em; text-transform:uppercase; }
+  .meta b { display:block; color:var(--ink); font-family:'Cormorant Garamond', serif; font-size:34px; font-weight:400; letter-spacing:0; text-transform:none; }
+  section.menu { border-top:1px solid var(--line); padding:110px 0; }
+  .menu-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:56px; gap:24px; flex-wrap:wrap; }
+  h2 { font-family:'Cormorant Garamond', serif; font-weight:400; font-size:clamp(40px,5vw,72px); line-height:1; }
+  .toggle { display:flex; border:1px solid var(--line); }
+  .toggle button { background:none; border:0; color:var(--mute); padding:12px 22px; font:inherit; font-size:12px; letter-spacing:.18em; text-transform:uppercase; cursor:pointer; }
+  .toggle button.on { background:var(--ink); color:var(--bg); }
+  .rows { display:grid; grid-template-columns:1fr 1fr; column-gap:80px; }
+  .row { display:flex; align-items:baseline; gap:16px; padding:24px 0; border-bottom:1px solid var(--line); }
+  .row span:first-child { font-family:'Cormorant Garamond', serif; font-size:26px; }
+  .row i { flex:1; border-bottom:1px dotted #3a342e; transform:translateY(-6px); }
+  .row span:last-child { color:var(--brass); font-size:14px; letter-spacing:.06em; }
+  .book { background:var(--panel); border:1px solid var(--line); display:grid; grid-template-columns:1fr auto; gap:32px; align-items:center; padding:56px; margin-bottom:110px; }
+  .book p { color:var(--mute); margin-top:10px; }
+  .chip { position:absolute; top:18px; right:18px; background:#000a; border:1px solid var(--line); padding:8px 12px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--brass); }
+  @media (max-width:860px) {
+    .links { display:none; }
+    .hero { grid-template-columns:1fr; min-height:auto; }
+    .portrait { aspect-ratio:4/3; }
+    .rows { grid-template-columns:1fr; }
+    .book { grid-template-columns:1fr; padding:32px; }
+    .meta { gap:28px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#">Kesh</a>
+    <div class="links"><a href="#">Services</a><a href="#">Stylists</a><a href="#">Gallery</a><a href="#">Visit</a></div>
+    <a class="btn" href="#">Book a chair</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Unisex atelier · Est. 2026</div>
+      <h1>Hair, <em>cut</em><br/>to character.</h1>
+      <p class="sub">A quiet studio for precision cuts, colour and grooming. For every head that walks in, whatever it wants to become.</p>
+      <a class="btn" href="#">Reserve your slot</a>
+      <div class="meta" style="margin-top:56px">
+        <div><b>12</b>Senior stylists</div>
+        <div><b>4.9</b>Google rating</div>
+        <div><b>40+</b>Services</div>
+      </div>
+    </div>
+    <div class="portrait">
+      <svg viewBox="0 0 300 400" preserveAspectRatio="none">
+        <path class="strand" d="M150 0 C 90 80, 210 140, 140 220 S 80 330, 160 400" />
+        <path class="strand" style="animation-delay:.2s,4.2s" d="M165 0 C 110 90, 230 150, 155 230 S 100 340, 175 400" />
+        <path class="strand" style="animation-delay:.4s,4.4s" d="M135 0 C 70 70, 190 130, 120 210 S 60 320, 140 400" />
+        <path class="strand" style="animation-delay:.6s,4.6s" d="M180 0 C 130 100, 250 160, 170 240 S 120 350, 195 400" />
+        <path class="strand" style="animation-delay:.8s,4.8s" d="M120 0 C 50 60, 170 120, 100 200 S 40 310, 120 400" />
+      </svg>
+      <span class="chip">Photo slot</span>
+      <span class="tag">Signature cut · Aarav, Sr. stylist</span>
+    </div>
+  </header>
+
+  <section class="menu">
+    <div class="menu-head">
+      <h2>The menu</h2>
+      <div class="toggle" id="tg"><button class="on" data-k="her">Her</button><button data-k="him">Him</button></div>
+    </div>
+    <div class="rows" id="rows"></div>
+  </section>
+
+  <div class="book">
+    <div><h2>Your chair is waiting.</h2><p>Pick a service, a stylist and a time. We will confirm on WhatsApp.</p></div>
+    <a class="btn" href="#">Book now</a>
+  </div>
+</div>
+<script>
+  const data = {
+    her: [['Signature cut & style','₹1,400'],['Global colour','₹4,800'],['Balayage','₹7,500'],['Keratin ritual','₹6,200'],['Blow-dry & finish','₹900'],['Bridal trial','₹3,500']],
+    him: [['Precision cut','₹700'],['Beard sculpt','₹450'],['Hot towel shave','₹550'],['Grey blending','₹1,800'],['Scalp detox','₹1,200'],['Groom package','₹4,500']]
+  };
+  const rows = document.getElementById('rows');
+  const render = k => rows.innerHTML = data[k].map(([n,p]) => `<div class="row"><span>${n}</span><i></i><span>${p}</span></div>`).join('');
+  render('her');
+  document.getElementById('tg').addEventListener('click', e => {
+    if (!e.target.dataset.k) return;
+    document.querySelectorAll('#tg button').forEach(b => b.classList.toggle('on', b === e.target));
+    render(e.target.dataset.k);
+  });
+</script>
+</body>
+</html>
